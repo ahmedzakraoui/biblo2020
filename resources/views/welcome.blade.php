@@ -10,25 +10,17 @@
     </tr>
   </thead>
   <tbody>
+  @foreach($livres as $livre)
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
+      <th scope="row">{{$livre->id}}</th>
+      <td>{{$livre->nom}}</td>
+      <td>{{$livre->categorie}}</td>
       <td><button type="button" class="btn btn-success">Voir</button>
         <button type="button" class="btn btn-secondary">Editer</button>
         <button type="button" class="btn btn-danger">Supprimer</button>
         </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Livre 2</td>
-      <td>Otto</td>
-      <td>
-        <button type="button" class="btn btn-success">Voir</button>
-        <button type="button" class="btn btn-secondary">Editer</button>
-        <button type="button" class="btn btn-danger">Supprimer</button>
-     </td>
-    </tr>
+    @endforeach
   </tbody>
 </table>@endsection
 

@@ -54,12 +54,12 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{route('acceuil')}}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Ajouter Livre</a>
+          <a class="dropdown-item" href="{{route('ajouter_livre')}}">Ajouter Livre</a>
           <a class="dropdown-item" href="#">Ajouter Catégorie</a>
         </div>
       </li>
@@ -83,9 +83,9 @@
   <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-    <div class="col-md-12">
-   @yield('content')
-   </div>
+      <div class="col-md-12">
+        @yield('content')
+        </div>
     </div>
 
     <hr>

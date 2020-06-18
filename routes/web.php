@@ -1,10 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','LivresController@index')->name('acceuil');
 
-Route::get('/ajouter_livre', function () {
-   return view('ajouter_livre');
-});
+Route::get('/add_livre','LivresController@ajouterLivre')->name('ajouter_livre');
 
