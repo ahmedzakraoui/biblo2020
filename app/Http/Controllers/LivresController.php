@@ -14,4 +14,16 @@ class LivresController extends Controller
     public function ajouterLivre() {
         return view('ajouter_livre');
     }
+    public function postAjouterLivre(Request $request ) {
+       $validData = $request->validate(
+        [
+        'titre' => 'required|min:3',
+        'categorie'=>'required'
+        ]
+       );
+        Livre::create($request->all());
+        return redirect()->back()->with('success','Votre livre a été inseré');
+        //return back();
+       
+    }
 }

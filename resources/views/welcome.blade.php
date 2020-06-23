@@ -13,7 +13,7 @@
   @foreach($livres as $livre)
     <tr>
       <th scope="row">{{$livre->id}}</th>
-      <td>{{$livre->nom}}</td>
+      <td>{{$livre->titre}}</td>
       <td>{{$livre->categorie}}</td>
       <td><button type="button" class="btn btn-success">Voir</button>
         <button type="button" class="btn btn-secondary">Editer</button>
