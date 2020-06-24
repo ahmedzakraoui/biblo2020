@@ -34,8 +34,7 @@ class LivresController extends Controller
     }
 
     public function supprimerLivre($id){
-        $livre = Livre::find($id)->delete();
-
+        Livre::find($id)->delete();
         return back()->with('success','Livre supprimé avec succès');
     }
 }
