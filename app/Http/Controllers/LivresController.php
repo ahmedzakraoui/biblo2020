@@ -8,7 +8,7 @@ use App\Livre;
 class LivresController extends Controller
 {
     public function index() {
-      $livres = Livre::all();
+      $livres = Livre::orderBy('id','desc')->paginate(5);
       return view('welcome',compact('livres'));
     }
     public function ajouterLivre() {
@@ -18,6 +18,7 @@ class LivresController extends Controller
        $validData = $request->validate(
         [
         'titre' => 'required|min:3',
+        'auteur' => 'required',
         'categorie'=>'required'
         ]
        );
@@ -25,5 +26,16 @@ class LivresController extends Controller
         return redirect()->back()->with('success','Votre livre a été inseré');
         //return back();
        
+    }
+
+    public function voirLivre($id) {
+        $livre = Livre::find($id);
+        return view('voir_livre',compact('livre'));
+    }
+
+    public function supprimerLivre($id){
+        $livre = Livre::find($id)->delete();
+
+        return back()->with('success','Livre supprimé avec succès');
     }
 }

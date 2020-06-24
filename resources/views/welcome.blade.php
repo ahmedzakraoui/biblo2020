@@ -1,12 +1,14 @@
 @extends('master')
 @section('content')
+{{$livres->links()}}
+<h2>{{$livres->count()}} Livres affiché(s) sur {{$livres->total()}} </h2>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Livre</th>
       <th scope="col">Catégorie</th>
-      <th scope="col">Action</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -15,14 +17,18 @@
       <th scope="row">{{$livre->id}}</th>
       <td>{{$livre->titre}}</td>
       <td>{{$livre->categorie}}</td>
-      <td><button type="button" class="btn btn-success">Voir</button>
-        <button type="button" class="btn btn-secondary">Editer</button>
-        <button type="button" class="btn btn-danger">Supprimer</button>
+      <td>
+      <a class="btn btn-success" href="{{route('voir_livre',$livre->id)}}">Voir</a>
+        <a href="#"  class="btn btn-secondary">Editer</a>
+        <a href="{{route('supprimer_livre',$livre->id)}}" class="btn btn-danger">Supprimer</button>
         </td>
     </tr>
     @endforeach
   </tbody>
-</table>@endsection
+  
+</table>
+{{$livres->links()}}
+@endsection
 
 
 @section('title')

@@ -14,7 +14,7 @@ class AjouterAuteurTableLivre extends Migration
     public function up()
     {
         Schema::table('livres', function (Blueprint $table) {
-            $table->string('auteur',255)->after('nom');
+            $table->string('auteur',255)->after('titre');
         });
     }
 
