@@ -15,7 +15,7 @@ class CategoriesController extends Controller
 
     $validData = $request->validate(
         [
-        'categorie'=>'required|min:3'
+        'categorie'=>'required|min:3|unique:categories'
         ]
        );
        Category::create($request->all());

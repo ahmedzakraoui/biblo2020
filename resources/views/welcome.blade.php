@@ -16,10 +16,10 @@
     <tr>
       <th scope="row">{{$livre->id}}</th>
       <td>{{$livre->titre}}</td>
-      <td>{{$livre->categorie}}</td>
+      <td>{{$livre->category->categorie}}</td>
       <td>
       <a class="btn btn-success" href="{{route('voir_livre',$livre->id)}}">Voir</a>
-        <a href="#"  class="btn btn-secondary">Editer</a>
+        <a href="{{route('editer_livre',$livre->id)}}"  class="btn btn-secondary">Editer</a>
         <a href="{{route('supprimer_livre',$livre->id)}}" class="btn btn-danger">Supprimer</button>
         </td>
     </tr>
