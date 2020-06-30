@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Livre;
+use App\Category;
 
 class LivresController extends Controller
 {
@@ -12,14 +13,15 @@ class LivresController extends Controller
       return view('welcome',compact('livres'));
     }
     public function ajouterLivre() {
-        return view('ajouter_livre');
+        $categories = Category::all();
+        return view('ajouter_livre',compact('categories'));
     }
     public function postAjouterLivre(Request $request ) {
        $validData = $request->validate(
         [
         'titre' => 'required|min:3',
         'auteur' => 'required',
-        'categorie'=>'required'
+        'category_id'=>'required'
         ]
        );
         Livre::create($request->all());

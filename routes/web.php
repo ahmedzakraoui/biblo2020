@@ -8,3 +8,6 @@ Route::post('/add_livre','LivresController@postAjouterLivre')->name('post_ajoute
 Route::get('/voir_livre/{id}','LivresController@voirLivre')->name('voir_livre');
 Route::get('/supprimer_livre/{id}','LivresController@supprimerLivre')->name('supprimer_livre');
 
+Route::get('/add_categorie','CategoriesController@ajouterCategorie')->name('ajouter_categorie');
+Route::post('/add_categorie','CategoriesController@postAjouterCategorie')->name('post_ajouter_categorie');
+

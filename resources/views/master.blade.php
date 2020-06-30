@@ -60,7 +60,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" href="{{route('ajouter_livre')}}">Ajouter Livre</a>
-          <a class="dropdown-item" href="#">Ajouter Catégorie</a>
+          <a class="dropdown-item" href="{{route('ajouter_categorie')}}">Ajouter Catégorie</a>
         </div>
       </li>
     </ul>
@@ -83,7 +83,7 @@
   <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-10">
       @if (session('success'))
           <div class="alert alert-success">
               {{ session('success') }}

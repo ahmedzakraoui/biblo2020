@@ -21,9 +21,13 @@
     @endif
   
   <div class="form-group">
-    <label for="exampleFormControlInput1">Catégorie</label>
-    <input type="text" value="{{ old('categorie')}}" name="categorie" class="form-control">
-  </div>
+      <label for="sel1">Choisir Categorie :</label>
+      <select class="form-control" name="category_id">
+        @foreach($categories as $cat)
+        <option value="{{$cat->id}}">{{$cat->categorie}}</option>
+        @endforeach
+      </select>
+    </div>
   @if($errors->first('titre'))
      <span class="alert alert-danger">{{$errors->first('titre')}}</span>
      <p>
