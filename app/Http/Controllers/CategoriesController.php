@@ -7,6 +7,10 @@ use App\Category;
 
 class CategoriesController extends Controller
 {
+   public function __construct()
+   {
+       $this->middleware('auth');
+   }
    public function ajouterCategorie(){
     return view('ajouter_categorie');
    }

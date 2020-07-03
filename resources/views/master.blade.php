@@ -60,10 +60,11 @@
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           @foreach($categories as $cat)
-          <a class="dropdown-item" href="">{{$cat->categorie}} ({{$cat->livres->count()}})</a>
+      <a class="dropdown-item" href="{{route('recherche_par_categorie',$cat->id)}}">{{$cat->categorie}} ({{$cat->livres->count()}})</a>
           @endforeach
         </div>
       </li>
+      @auth
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actions</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -71,12 +72,52 @@
           <a class="dropdown-item" href="{{route('ajouter_categorie')}}">Ajouter Catégorie</a>
         </div>
       </li>
+      @endauth
     </ul>
     <form class="form-inline my-2 my-lg-0" method='POST' action="">
       <input class="form-control mr-sm-2" type="text" name='recherche' placeholder="Chercher un livre par titre" aria-label="Chercher un livre par titre">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher Livre</button>
     </form>
   </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Créer un compte</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
 </nav>
 
 <main role="main">
@@ -84,7 +125,15 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3">Hello, world!</h1>
+      <h1 class="display-3">
+     
+      Hello, 
+      @auth
+      {{Auth::user()->name}} 
+      @else World !!
+      @endauth
+     
+      </h1>
     </div>
   </div>
 

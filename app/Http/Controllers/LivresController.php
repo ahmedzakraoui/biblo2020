@@ -8,6 +8,7 @@ use App\Category;
 
 class LivresController extends Controller
 {
+  
     public function index() {
       $livres = Livre::orderBy('id','desc')->paginate(5);
       return view('welcome',compact('livres'));
@@ -57,5 +58,9 @@ class LivresController extends Controller
     public function supprimerLivre($id){
         Livre::find($id)->delete();
         return back()->with('success','Livre supprimé avec succès');
+    }
+    public function chercherParCategorie($idCat){
+        $livres = Livre::where('category_id', $idCat)->orderBy('id','desc')->paginate(5);
+       return view('welcome',compact('livres'));
     }
 }

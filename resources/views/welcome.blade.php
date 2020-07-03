@@ -18,9 +18,11 @@
       <td>{{$livre->titre}}</td>
       <td>{{$livre->category->categorie}}</td>
       <td>
-      <a class="btn btn-success" href="{{route('voir_livre',$livre->id)}}">Voir</a>
+        <a class="btn btn-success" href="{{route('voir_livre',$livre->id)}}">Voir</a>
+        @auth
         <a href="{{route('editer_livre',$livre->id)}}"  class="btn btn-secondary">Editer</a>
         <a href="{{route('supprimer_livre',$livre->id)}}" class="btn btn-danger">Supprimer</button>
+        @endauth
         </td>
     </tr>
     @endforeach
